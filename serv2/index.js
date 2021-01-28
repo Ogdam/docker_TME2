@@ -10,7 +10,7 @@ PONG_SEND = 0
 app.get('/ping', function(req, res) {
   PING_RECEIVE += 1
   console.log('ping');
-  res.send("")
+  res.send({})
   sleep.msleep(500);
   send_pong()
 });
@@ -25,11 +25,11 @@ app.listen(20002, function() {
 });
 
 function send_port(){
-  axios.post('http://tme2_serv3_1:20003/serv_port', {port:'20002', name:'serv2'})
-        .then((res) => { console.log(`statusCode: ${res.statusCode}`)})
+  axios.post('http://serv3:20003/serv_port', {port:'20002', name:'serv2'})
+        .then((res) =>    {console.error(`statusCode: ${res.statusCode}`)})
         .catch((error) => {console.error(error)})}
 
 function send_pong(){
   PONG_SEND += 1
-  axios.get('http://tme2_serv1_1:20001/pong').then((res) => console.log("pong send")).catch((error) => {console.error(error)})
+  axios.get('http://serv1:20001/pong').then((res) => {console.error("pong send")}).catch((error) => {console.error(error)})
 }

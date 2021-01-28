@@ -12,6 +12,7 @@ SERV_LIST = []
 
 app.post('/serv_port', function(req, res) {
   SERV_LIST.push(req.body)
+  res.send('')
 });
 
 app.get('/serv_port_list', function(req, res) {
