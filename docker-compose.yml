@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  serv2:
+    build:
+      context: ./serv2/
+      dockerfile: Dockerfile
+    ports:
+      - "20002:20002"
+    env_file: ./serv2/.env
+
+  serv1:
+    build:
+      context: ./serv1/
+      dockerfile: Dockerfile
+    ports:
+      - "20001:20001"
+    env_file: ./serv1/.env
+
+  serv3:
+    build:
+      context: ./serv3/
+      dockerfile: Dockerfile
+    ports:
+      - "20003:20003"
+    env_file: ./serv3/.env
