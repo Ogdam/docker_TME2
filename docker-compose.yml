@@ -2,6 +2,16 @@ version: '2'
 
 services:
 
+  gateway:
+    build:
+      context: ./gateway/
+      dockerfile: Dockerfile
+    container_name: gateway
+    hostname: gateway
+    ports:
+      - "20005:20005"
+    env_file: ./serv3/.env
+
   serv3:
     build:
       context: ./serv3/
@@ -12,14 +22,34 @@ services:
       - "20003:20003"
     env_file: ./serv3/.env
 
-  serv2:
+  serv21:
     build:
       context: ./serv2/
       dockerfile: Dockerfile
-    container_name: serv2
-    hostname: serv2
+    container_name: serv21
+    hostname: serv21
     ports:
-      - "20002:20002"
+      - "20011:20002"
+    env_file: ./serv2/.env
+
+  serv22:
+    build:
+      context: ./serv2/
+      dockerfile: Dockerfile
+    container_name: serv22
+    hostname: serv22
+    ports:
+      - "20012:20002"
+    env_file: ./serv2/.env
+
+  serv23:
+    build:
+      context: ./serv2/
+      dockerfile: Dockerfile
+    container_name: serv23
+    hostname: serv23
+    ports:
+      - "20013:20002"
     env_file: ./serv2/.env
 
   serv4:
