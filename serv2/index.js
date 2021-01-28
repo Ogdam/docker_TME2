@@ -31,5 +31,5 @@ function send_port(){
 
 function send_pong(){
   PONG_SEND += 1
-  axios.get('http://serv1:20001/pong').then((res) => {console.error("pong send")}).catch((error) => {console.error(error)})
+  axios.get('http://serv4:20004/pong').then((res) => {console.error("pong send")}).catch((error) => {console.error(error)})
 }

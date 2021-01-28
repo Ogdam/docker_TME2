@@ -22,6 +22,16 @@ services:
       - "20002:20002"
     env_file: ./serv2/.env
 
+  serv4:
+    build:
+      context: ./serv4/
+      dockerfile: Dockerfile
+    container_name: serv4
+    hostname: serv4
+    ports:
+      - "20004:20004"
+    env_file: ./serv4/.env
+
   serv1:
     build:
       context: ./serv1/

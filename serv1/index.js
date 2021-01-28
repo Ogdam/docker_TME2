@@ -32,6 +32,6 @@ function send_port(){
 
 function send_ping(){
   PING_SEND =+1
-  axios.get('http://serv2:20002/ping').then((res) => {console.error("pong send")}).catch((error) => {console.error(error)})
+  axios.get('http://serv4:20004/ping').then((res) => {console.error("ping send")}).catch((error) => {console.error(error)})
 
 }
