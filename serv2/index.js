@@ -9,7 +9,7 @@ PONG_SEND = 0
 
 app.get('/ping', function(req, res) {
   PING_RECEIVE += 1
-  console.log('ping');
+  console.log('ping receive');
   res.send({})
   sleep.msleep(500);
   send_pong()
@@ -26,10 +26,11 @@ app.listen(20002, function() {
 
 function send_port(){
   axios.post('http://serv3:20003/serv_port', {port:'20002', name:'serv2'})
-        .then((res) =>    {console.error(`statusCode: ${res.statusCode}`)})
+        .then((res) =>    {console.log("port/ip referenced")})
         .catch((error) => {console.error(error)})}
 
 function send_pong(){
   PONG_SEND += 1
-  axios.get('http://serv4:20004/pong').then((res) => {console.error("pong send")}).catch((error) => {console.error(error)})
+  console.log("pong send")
+  axios.get('http://gateway:20005/pong').then((res) => {}).catch((error) => {console.error(error)})
 }

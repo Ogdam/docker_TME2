@@ -11,6 +11,8 @@ services:
     ports:
       - "20005:20005"
     env_file: ./serv3/.env
+    depends_on:
+      - serv4
 
   serv3:
     build:
@@ -31,6 +33,10 @@ services:
     ports:
       - "20011:20002"
     env_file: ./serv2/.env
+    depends_on:
+      - serv3
+      - gateway
+
 
   serv22:
     build:
@@ -41,6 +47,10 @@ services:
     ports:
       - "20012:20002"
     env_file: ./serv2/.env
+    depends_on:
+      - serv3
+      - gateway
+
 
   serv23:
     build:
@@ -51,6 +61,9 @@ services:
     ports:
       - "20013:20002"
     env_file: ./serv2/.env
+    depends_on:
+      - serv3
+      - gateway
 
   serv4:
     build:
@@ -61,6 +74,8 @@ services:
     ports:
       - "20004:20004"
     env_file: ./serv4/.env
+    depends_on:
+      - serv3
 
   serv1:
     build:
@@ -71,3 +86,8 @@ services:
     ports:
       - "20001:20001"
     env_file: ./serv1/.env
+    depends_on:
+      - gateway
+      - serv21
+      - serv22
+      - serv23
